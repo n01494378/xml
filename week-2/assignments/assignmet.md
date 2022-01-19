@@ -1,8 +1,11 @@
 # Assignment 1
 
 1. Open `week-2/assignments/assignment.xml` in your browser. Are there any errors? Explain the error and fix it.
+A. 
 2. What is the use of CDATA block in this document?
+A. CDATA is a section in XML which is used to interpret character data. It treats the text data as raw text in character format.
 3. Add comment line to the end of file which contains you name and student id.
+
 4. Identify prolog, document body, and epilog in the document. Are there any processing instructions?
 5. Add inline DTD for this document.
 6. Verify that file is well-formed and valid.
