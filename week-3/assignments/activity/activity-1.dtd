@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+![DTD validation screen shot](../week3/assignments/images/1.jpg)
+<!DOCTYPE products 
+[
+  <!ELEMENT products (product+)>
+  <!ELEMENT product (productName, manufacturer, description, prices, productItems)>
+  <!ATTLIST product sku ID #REQUIRED
+                    createdAt CDATA #REQUIRED
+                    shippable CDATA #REQUIRED>
+  <!ELEMENT productName (#PCDATA)>
+  <!ATTLIST manufacturer id CDATA #REQUIRED>
+  <!ELEMENT manufacturer (#PCDATA)>
+  <!ELEMENT description (#PCDATA)>
+  <!ELEMENT prices (price,price,price)>
+  <!ELEMENT price (#PCDATA)>
+  <!ELEMENT productItems (#PCDATA)>
+]>
+<!-- i have uploaded the screenshots in images folder -->
