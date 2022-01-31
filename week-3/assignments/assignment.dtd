@@ -6,9 +6,9 @@
   product_id  CDATA #REQUIRED
   description CDATA #REQUIRED
   product_image CDATA #REQUIRED>
-<!ELEMENT catalog_item (item_number,price,size+>
+<!ELEMENT catalog_item (item_number,price,size+)>
 <!ATTLIST catalog_item gender NMTOKEN #REQUIRED>
-<!ELEMENT item_number (#PCDATA)>
+<!ELEMENT item_number (#PCDATA>
 <!ELEMENT price (#PCDATA)>
 <!ELEMENT size (color_swatch+)>
 <!ATTLIST size description CDATA #REQUIRED>

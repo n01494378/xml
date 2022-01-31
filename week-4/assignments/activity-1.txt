@@ -1,0 +1,4 @@
+/products/product[2]
+/products/product[4]
+//product [@sku='BOS12DDF2']
+/products/product/manufacturer [@id="sjb-pet"]

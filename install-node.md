@@ -1,4 +1,4 @@
-# How to install node
+n# How to install node
 
 1. go to [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 2. download installer
