@@ -1,0 +1,30 @@
+<!ELEMENT article (informaltable,para)>
+<!ATTLIST article
+  xmlns CDATA #FIXED ''
+  lang CDATA #REQUIRED>
+
+<!ELEMENT informaltable (tgroup)>
+<!ATTLIST informaltable
+  xmlns CDATA #FIXED ''
+  frame NMTOKEN #REQUIRED>
+
+<!ELEMENT tgroup (tbody)>
+<!ATTLIST tgroup
+  xmlns CDATA #FIXED ''
+  cols CDATA #REQUIRED>
+
+<!ELEMENT tbody (row)+>
+<!ATTLIST tbody
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT row (entry)+>
+<!ATTLIST row
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT entry (para)+>
+<!ATTLIST entry
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT para (#PCDATA)>
+<!ATTLIST para
+  xmlns CDATA #FIXED ''>
