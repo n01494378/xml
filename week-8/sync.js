@@ -1,14 +1,16 @@
 function inc(a) {
-  return a + 1;
+  return Promise((resolve) => setTimeout(3000),then(() => (a+1)));
 }
 
-const sum = function (a, b) {
+const sum = async function (a, b) {
   return a + b;
 };
+
 
 const max = (a, b) => (a > b ? a : b);
 
 const avg = (a, b) => {
+  new Promise((resolve ))
   const s = sum(a, b);
   return s / 2;
 };

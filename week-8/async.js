@@ -1,38 +1,34 @@
-function timeout(ms) {
-  return new Promise(function (resolve) {
-    setTimeout(function () {
-      resolve();
-    }, ms);
-  });
-}
+const timeout = (ms) => new Promise((resolve) => {
+  setTimeout(() => {
+    resolve('err');
+  }, ms);
+});
 
 async function inc(a) {
-  await timeout(2000);
-  return a + 1;
+  timeout(3000)
+  .then(() => a + 1);
 }
 
-const sum = async function (a, b) {
-  await timeout(2000);
-  return a + b;
-};
 
-const max = async (a, b) => {
-  await timeout(2000);
+const sum = async (a, b) => 
+  timeout(3000)
+  .then(() =>  (a + b))
 
-  return a > b ? a : b;
-};
 
-const avg = async (a, b) => {
-  await timeout(2000);
-  const s = await sum(a, b);
-  return s / 2;
-};
+
+const max = async (a, b) =>   
+  timeout(3000)
+  .then(() => (a > b ? a : b))
+
+const avg = async (a, b) => 
+  timeout(3000)
+  .then(() => sum (a,b))
+  .then((s) => s / 2)
 
 const obj = {
   name: "Marcus Aurelius",
   async split(sep = " ") {
-    await timeout(2000);
-
+    await timeout(3000);
     return this.name.split(sep);
   },
 };
@@ -42,26 +38,20 @@ class Person {
     this.name = name;
   }
 
-  static async of(name) {
-    await timeout(2000);
-
+  static of(name) {
     return new Person(name);
   }
 
-  async split(sep = " ") {
-    await timeout(2000);
-
+  split(sep = " ") {
     return this.name.split(sep);
   }
 }
 
-const person = new Person("Marcus Aurelius");
+const person = Person.of("Marcus Aurelius");
 
-(async () => {
-  console.log("await inc(5) =", await inc(5));
-  console.log("await sum(1, 3) =", await sum(1, 3));
-  console.log("await max(8, 6) =", await max(8, 6));
-  console.log("await avg(8, 6) =", await avg(8, 6));
-  console.log("await obj.split() =", await obj.split());
-  console.log("await person.split() =", await person.split());
-})();
+console.log("inc(5) =", inc(5));
+console.log("sum(1, 3) =", sum(1, 3));
+console.log("max(8, 6) =", max(8, 6));
+console.log("avg(8, 6) =", avg(8, 6));
+console.log("obj.split() =", obj.split());
+console.log("person.split() =", person.split());
