@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>TABLE</title>
+  </head>
+  <style>
+    th,tr {
+        padding: 30px;
+        text-align: center;
+    }
+</style>
+  <body>
+    <form onsubmit="onSubmit(event)" onreset="onReset(event)">
+    <form onreset="onReset()">
+      <input
+        type="text"
+        name="name"
+        id="input-name-term"
+        placeholder="enter keyword"
+      />
+      <button type="submit">Apply filter</button>
+      <button type="reset">Reset</button>
+    </form>
+    <table id="my-table">
+      <tr>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>IP Address</th>
+      </tr>
+    </table>
+    <script type="text/javascript" src="ajax.js"></script>
+  </body>
+</html>
