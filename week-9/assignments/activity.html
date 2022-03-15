@@ -1,34 +1,30 @@
 <html>
   <head>
-    <title>TABLE</title>
+    <title>Table</title>
   </head>
-  <style>
-    th,tr {
-        padding: 30px;
-        text-align: center;
-    }
-</style>
   <body>
     <form onsubmit="onSubmit(event)" onreset="onReset(event)">
-    <form onreset="onReset()">
-      <input
-        type="text"
-        name="name"
-        id="input-name-term"
-        placeholder="enter keyword"
-      />
-      <button type="submit">Apply filter</button>
+      <input type="text" name="value" id="input" placeholder="enter value"/>
+      <select name="filters" id="filter">
+        <option value="fname">First Name</option>
+        <option value="lname">Last Name</option>
+        <option value="email">Email</option>
+        <option value="gender">Gender</option>
+        <option value="ip_address">IP Address</option>
+      </select>
+      <button type="submit">Apply filters</button>
       <button type="reset">Reset</button>
-    </form>
-    <table id="my-table">
-      <tr>
-        <th>ID</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
+    </form>    
+    <table>
+      <thead>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
         <th>Email</th>
         <th>Gender</th>
         <th>IP Address</th>
-      </tr>
+      </thead>
+      <tbody id="table"></tbody>
     </table>
     <script type="text/javascript" src="ajax.js"></script>
   </body>
