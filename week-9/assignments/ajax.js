@@ -10,8 +10,8 @@ const loadData = (path) =>
     xhttp.send();
   });
 
-const renderTable = (data, term) => {
-  const tableBody = document.getElementById("table");
+const renderTable = (data, nameTerm) => {
+  const tableBody = document.getElementById("table-body");
 
   if (!tableBody) {
     throw new Error("No table element found");
@@ -19,59 +19,37 @@ const renderTable = (data, term) => {
 
   let source = data;
 
-  if (term) {
-
-    const valueTerm = document.getElementById('input').value.toLowerCase();
-      switch(term) {
-        case 'fname':      
-            source = source.filter(({ first_name }) => first_name.toLowerCase().includes(valueTerm));            
-            break;
-        case 'lname':
-            source = source.filter(({ last_name }) => last_name.toLowerCase().includes(valueTerm));
-            break;
-        case 'email':
-            source = source.filter(({ email }) => email.toLowerCase() === valueTerm);
-            break;
-        case 'gender':
-            source = source.filter(({ gender }) => gender.toLowerCase() === valueTerm);
-            break;
-        case 'ip_address':
-            source = source.filter(({ ip_address }) => ip_address.toLowerCase().includes(valueTerm));
-            break; 
-        default:
-            console.log('Default occured')
-            break;      
-      }
-    
+  if (nameTerm) {
+    source = source.filter(
+      ({ first_name, last_name, email, gender, ip_address }) =>
+        last_name.toLowerCase().includes(nameTerm) ||
+        first_name.toLowerCase().includes(nameTerm) ||
+        email.toLowerCase().includes(nameTerm) ||
+        gender.toLowerCase().includes(nameTerm) ||
+        ip_address.includes(nameTerm)
+    );
   }
 
   const rows = source.reduce(
     (acc, { id, first_name, last_name, email, gender, ip_address }) =>
       acc +
-      `<tr>
-        <td>${id}</td>
-        <td>${first_name}</td>
-        <td>${last_name}</td>
-        <td>${email}</td>
-        <td>${gender}</td>
-        <td>${ip_address}</td>
-    </tr>`,
+      `<tr id="table-row-${id}"><td>${id}</td><td>${first_name}</td><td>${last_name}</td><td>${email}</td><td>${gender}</td><td>${ip_address}</td></tr>`,
     ``
   );
 
   tableBody.innerHTML = rows;
 };
 
-loadData(`data.json`).then((data) => renderTable(data));
+loadData(`./data.json`).then((data) => renderTable(data));
 
 const onSubmit = (event) => {
   event.preventDefault();
 
-  const term = event.target.filters.value;
-  
-  loadData('data.json').then((data) => renderTable(data, term));
+  const term = event.target.name.value.toLowerCase().trim();
+
+  loadData(`./data.json`).then((data) => renderTable(data, term));
 };
 
 const onReset = () => {
-  loadData(`data.json`).then((data) => renderTable(data));
+  loadData(`./data.json`).then((data) => renderTable(data));
 };
